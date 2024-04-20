@@ -1,0 +1,55 @@
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header, main, footer {
+    text-align: center;
+    padding: 20px;
+}
+
+header {
+    background-color: #222;
+    color: #fff;
+}
+
+h1 {
+    margin: 0.5em 0;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+.button {
+    background-color: #0066cc;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #0055bb;
+}
+
+footer {
+    font-size: 0.8em;
+    color: #666;
+    background-color: #222;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#pdf-viewer canvas {
+    width: 100%; /* S'ajuste à la largeur de la section */
+    height: auto; /* Conserve les proportions */
+    border: 1px solid #ccc; /* Bordure pour mieux voir le cadre du canvas */
+}
