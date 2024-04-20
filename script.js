@@ -13,24 +13,19 @@ canvas.id = 'pdf-render';
 document.getElementById('pdf-viewer').appendChild(canvas);
 
 // Fonction pour calculer l'échelle basée sur la fenêtre d'affichage
-// ... code précédent ...
-
-// Fonction pour calculer l'échelle basée sur la fenêtre d'affichage
 function calculateScale(page) {
+    // Obtenir les marges pour le calcul de la hauteur disponible
     const headerHeight = document.querySelector('header').offsetHeight;
     const footerHeight = document.querySelector('footer').offsetHeight;
-    // Ajustez le `20` pour correspondre à l'espace supplémentaire que vous voulez entre le PDF et le header/footer
-    const availableHeight = window.innerHeight - headerHeight - footerHeight - 20;
-    const availableWidth = window.innerWidth - 20; // Assurez-vous d'inclure un peu de marge sur les côtés
+    const navigationControlsHeight = document.getElementById('navigation-controls').offsetHeight;
+    const availableHeight = window.innerHeight - headerHeight - footerHeight - navigationControlsHeight - 20; // 20px pour un peu de marge
+    const availableWidth = window.innerWidth;
 
+    // Calculer l'échelle basée sur la dimension la plus restrictive
     const scaleHeight = availableHeight / page.getViewport({ scale: 1 }).height;
     const scaleWidth = availableWidth / page.getViewport({ scale: 1 }).width;
-
     return Math.min(scaleHeight, scaleWidth);
 }
-
-// ... restant du code ...
-
 
 // Charge et dessine le PDF
 function renderPage(num) {
