@@ -1,16 +1,31 @@
-const url = './Portfolio_2024.pdf';  // Assurez-vous que le chemin est correct
+const url = './Portfolio_2024.pdf'; // Chemin vers votre PDF
 
 let pdfDoc = null,
     pageNum = 1,
     pageIsRendering = false,
     pageNumIsPending = null;
 
-const scale = 1.0,  // Ajustez ceci selon les besoins de taille
-      canvas = document.createElement('canvas'),
+// Il n'est plus nécessaire de définir une échelle globale ici
+const canvas = document.createElement('canvas'),
       ctx = canvas.getContext('2d');
 
 canvas.id = 'pdf-render';
 document.getElementById('pdf-viewer').appendChild(canvas);
+
+// Fonction pour calculer l'échelle basée sur la fenêtre d'affichage
+function calculateScale(page) {
+    // Obtenir les marges pour le calcul de la hauteur disponible
+    const headerHeight = document.querySelector('header').offsetHeight;
+    const footerHeight = document.querySelector('footer').offsetHeight;
+    const navigationControlsHeight = document.getElementById('navigation-controls').offsetHeight;
+    const availableHeight = window.innerHeight - headerHeight - footerHeight - navigationControlsHeight - 20; // 20px pour un peu de marge
+    const availableWidth = window.innerWidth;
+
+    // Calculer l'échelle basée sur la dimension la plus restrictive
+    const scaleHeight = availableHeight / page.getViewport({ scale: 1 }).height;
+    const scaleWidth = availableWidth / page.getViewport({ scale: 1 }).width;
+    return Math.min(scaleHeight, scaleWidth);
+}
 
 // Charge et dessine le PDF
 function renderPage(num) {
@@ -18,7 +33,11 @@ function renderPage(num) {
 
     // Récupère la page
     pdfDoc.getPage(num).then(page => {
-        const viewport = page.getViewport({ scale: scale });
+        // Calculez l'échelle pour que le PDF s'adapte au viewport
+        const scale = calculateScale(page);
+        const viewport = page.getViewport({ scale });
+
+        // Mettez à jour la taille du canvas pour correspondre à la vue
         canvas.height = viewport.height;
         canvas.width = viewport.width;
 
@@ -46,26 +65,32 @@ function setupEventListeners() {
     const prevPageBtn = document.getElementById('prev-page');
     const nextPageBtn = document.getElementById('next-page');
 
-    // Navigate to the previous page
+    // Ajouter des écouteurs d'événements pour la navigation
     prevPageBtn.addEventListener('click', () => {
         if (pageNum <= 1) return;
         pageNum--;
         renderPage(pageNum);
     });
 
-    // Navigate to the next page
     nextPageBtn.addEventListener('click', () => {
         if (pageNum >= pdfDoc.numPages) return;
         pageNum++;
         renderPage(pageNum);
     });
+
+    // Redimensionner le PDF lors du redimensionnement de la fenêtre
+    window.addEventListener('resize', () => {
+        if (pdfDoc) {
+            renderPage(pageNum);
+        }
+    });
 }
 
 // Charge le document PDF
-pdfjsLib.getDocument(url).promise.then((pdfDoc_) => {
+pdfjsLib.getDocument(url).promise.then(pdfDoc_ => {
     pdfDoc = pdfDoc_;
     renderPage(pageNum);
-    setupEventListeners();  // Assurez-vous que les écouteurs d'événements sont configurés après que le document est chargé
+    setupEventListeners(); // S'assurer que les écouteurs d'événements sont configurés après le chargement du document
 }).catch(function(error) {
     console.error('Error loading PDF: ' + error.message);
 });
