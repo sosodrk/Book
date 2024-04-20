@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio de Designer</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.12.313/pdf.min.js"></script>
+    <title>Portfolio Sophie Drakakides</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Empêche le défilement de la page */
+        }
+
+        embed {
+            width: 100%;
+            height: 100%;
+            border: none; /* Supprime les bordures par défaut */
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Portfolio Sophie Drakakides</h1>
-    </header>
-    <main>
-        <section>
-            <div id="pdf-viewer"></div>
-            <div id="navigation-controls">
-                <button id="prev-page">Page Précédente</button>
-                <span id="page-info">Page <span id="page-num"></span> sur <span id="page-count"></span></span>
-                <button id="next-page">Page Suivante</button>
-            </div>
-        </section>
-    </main>
-    <script src="script.js"></script>
+    <embed src="Portfolio_2024.pdf" type="application/pdf" />
 </body>
 </html>
