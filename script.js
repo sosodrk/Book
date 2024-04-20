@@ -1,4 +1,4 @@
-const url = 'chemin/vers/votre/portfolio.pdf'; // Chemin vers votre PDF
+const url = './Portfolio_2024.pdf'; // Chemin vers votre PDF
 
 let pdfDoc = null,
     pageNum = 1,
