@@ -5,7 +5,7 @@ let pdfDoc = null,
     pageIsRendering = false,
     pageNumIsPending = null;
 
-const scale = 1.5,  // Ajustez ceci selon les besoins de taille
+const scale = 1,  // Ajustez ceci selon les besoins de taille
       canvas = document.createElement('canvas'),
       ctx = canvas.getContext('2d'),
       prevPageBtn = document.getElementById('prev-page'),
