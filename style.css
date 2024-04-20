@@ -48,9 +48,15 @@ footer {
     width: 100%;
 }
 
+#pdf-viewer {
+    width: 80%; /* Ajustez la largeur selon vos besoins */
+    margin: 0 auto; /* Centre le viewer dans son conteneur */
+}
+
 #pdf-viewer canvas {
-    width: 100%; /* S'ajuste à la largeur de la section */
+    width: 100%; /* S'ajuste à la largeur de #pdf-viewer */
     height: auto; /* Conserve les proportions */
+    display: block; /* Assure que le canvas n'a pas d'espace extra autour */
     border: 1px solid #ccc; /* Bordure pour mieux voir le cadre du canvas */
 }
 
