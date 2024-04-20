@@ -25,16 +25,18 @@ p {
     font-size: 1.2em;
 }
 
-.button {
+.button, #navigation-controls button {
     background-color: #0066cc;
     color: #ffffff;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
+    cursor: pointer;
+    border: none;
 }
 
-.button:hover {
+.button:hover, #navigation-controls button:hover {
     background-color: #0055bb;
 }
 
@@ -48,36 +50,22 @@ footer {
     width: 100%;
 }
 
-#pdf-viewer {
-    width: 80%; /* Ajustez la largeur selon vos besoins */
-    margin: 0 auto; /* Centre le viewer dans son conteneur */
-}
-
 #pdf-viewer canvas {
     width: 100%; /* S'ajuste à la largeur de #pdf-viewer */
     height: auto; /* Conserve les proportions */
     display: block; /* Assure que le canvas n'a pas d'espace extra autour */
     border: 1px solid #ccc; /* Bordure pour mieux voir le cadre du canvas */
+    margin: auto; /* Centre le canvas horizontalement */
 }
-
 
 #navigation-controls {
     margin-top: 20px;
 }
 
 #navigation-controls button {
-    padding: 8px;
-    background-color: #444;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#navigation-controls button:hover {
-    background-color: #666;
+    margin: 0 10px;
 }
 
 #page-info {
-    margin: 0 15px;
+    font-size: 1em;
 }
