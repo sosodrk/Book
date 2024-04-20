@@ -73,6 +73,7 @@ footer {
     margin: auto; /* Centre le canvas horizontalement */
 }
 
+
 #navigation-controls button {
     background-color: #222; /* La même couleur que le header */
     color: #fff; /* Texte en blanc pour correspondre à la couleur du texte du header */
