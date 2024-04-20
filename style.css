@@ -54,13 +54,15 @@ footer {
 }
 
 #pdf-viewer {
-    position: fixed; /* Position fixe pour que le viewer soit toujours visible */
-    top: 60px; /* Ajustez cette valeur pour prendre en compte la hauteur de votre header */
-    bottom: 40px; /* Ajustez cette valeur pour prendre en compte la hauteur de votre footer */
+    position: fixed; /* reste fixé */
+    top: 60px; /* ajustez cette valeur à la hauteur de votre header */
+    bottom: 60px; /* ajustez cette valeur si vous avez un footer */
     left: 0;
     right: 0;
-    overflow: auto; /* Permettre le défilement à l'intérieur du viewer si nécessaire */
-    padding: 1rem 0; /* Espacement vertical si vous souhaitez en avoir */
+    overflow: auto; /* permet le défilement si le contenu est trop grand */
+    padding-top: 1em; /* espace supplémentaire en haut si nécessaire */
+    padding-bottom: 1em; /* espace supplémentaire en bas pour les boutons de navigation */
+    /* ... autres styles de pdf-viewer ... */
 }
 
 #pdf-viewer canvas {
@@ -71,12 +73,10 @@ footer {
     margin: auto; /* Centre le canvas horizontalement */
 }
 
-#navigation-controls {
-    position: fixed; /* Rend les boutons de navigation fixes */
-    bottom: 10px; /* Positionnement par rapport au bas de la fenêtre */
-    left: 50%; /* Centrage horizontal */
-    transform: translateX(-50%); /* Ajustement précis pour le centrage horizontal */
-    z-index: 1000; /* S'assure qu'ils sont au-dessus de tout autre contenu */
+#navigation-controls button {
+    background-color: #222; /* La même couleur que le header */
+    color: #fff; /* Texte en blanc pour correspondre à la couleur du texte du header */
+    /* ... autres styles de bouton ... */
 }
 
 #navigation-controls button {
