@@ -43,7 +43,6 @@ function renderPage(num) {
         });
     });
 }
-
 // Navigate to the previous page
 prevPageBtn.addEventListener('click', () => {
     if (pageNum <= 1) return;
