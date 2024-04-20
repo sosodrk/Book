@@ -53,3 +53,24 @@ footer {
     height: auto; /* Conserve les proportions */
     border: 1px solid #ccc; /* Bordure pour mieux voir le cadre du canvas */
 }
+
+#navigation-controls {
+    margin-top: 20px;
+}
+
+#navigation-controls button {
+    padding: 8px;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#navigation-controls button:hover {
+    background-color: #666;
+}
+
+#page-info {
+    margin: 0 15px;
+}
